@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 8564886888561403792}
   - component: {fileID: 129612967343091726}
   - component: {fileID: 6623171179467313861}
+  - component: {fileID: 4683650586571053668}
   m_Layer: 0
   m_Name: FemalePlayer
   m_TagString: Untagged
@@ -501,6 +502,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901371bdbde23b9479c6148bf1123ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
+  mouseSensitivity: 20
+--- !u!95 &4683650586571053668
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248814340021544371}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 0308cf4e83cf517488b60af58b290fe0, type: 3}
+  m_Controller: {fileID: 9100000, guid: 86b0c6259785dd04c9daffe2ce6448a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1346611882097639672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2288,13 +2312,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6682516497769877056}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08257045, y: -0, z: -0, w: 0.9965852}
-  m_LocalPosition: {x: 0, y: 1.92, z: -3.11}
+  m_LocalRotation: {x: 0.16871129, y: -0, z: -0, w: 0.98566556}
+  m_LocalPosition: {x: 0, y: 2.51, z: -3.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8564886888561403792}
-  m_LocalEulerAnglesHint: {x: 9.473, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 19.426, y: 0, z: 0}
 --- !u!20 &8005323057429835141
 Camera:
   m_ObjectHideFlags: 0

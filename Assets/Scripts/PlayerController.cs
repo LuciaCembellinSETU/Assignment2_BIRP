@@ -3,12 +3,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 3f;
-    public float mouseSensitivity = 25f;
+    public float moveSpeed = 5f;
+    public float mouseSensitivity = 20f;
 
+    // Camera movement
     private Vector3 moveDirection;
     private Animator anim;
     private float yRotation = 0f;
+
+    // Attack
+    bool isAttacking = false;
 
     void Start()
     {
@@ -50,4 +54,20 @@ public class PlayerController : MonoBehaviour
         Vector3 move = transform.TransformDirection(direction);
         transform.position += move * moveSpeed * Time.deltaTime;
     }
+
+    public void OnAttack(InputValue value)
+    {
+        if (!isAttacking)
+        {
+            anim.SetTrigger("attack");
+            isAttacking = true;
+        }
+    }
+
+    // Add an animation event to end attack
+    public void EndAttack()
+    {
+        isAttacking = false;
+    }
+
 }
