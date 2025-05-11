@@ -3,12 +3,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float mouseSensitivity = 20f;
+
+    public float moveSpeed = 5f;    // Player speed
+    
 
     // Camera movement
-    private Vector3 moveDirection;
     private Animator anim;
+    private Vector3 moveDirection;
+    private float mouseSensitivity = 20f;    // Sensibility for the mouse
     private float yRotation = 0f;
 
     // Attack
@@ -61,6 +63,8 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetTrigger("attack");
             isAttacking = true;
+
+            // TODO - Implement damage the enemies
         }
     }
 
@@ -68,6 +72,11 @@ public class PlayerController : MonoBehaviour
     public void EndAttack()
     {
         isAttacking = false;
+    }
+
+    public bool IsAttacking()
+    {
+        return isAttacking;
     }
 
 }
