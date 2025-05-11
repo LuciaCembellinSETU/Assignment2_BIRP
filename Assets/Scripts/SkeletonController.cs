@@ -1,6 +1,7 @@
+using Interfaces;
 using UnityEngine;
 
-public class SkeletonController : MonoBehaviour
+public class SkeletonController : MonoBehaviour, IDamageable
 {
     public int maxHealth = 3;
     public int currentHealth;
@@ -14,25 +15,26 @@ public class SkeletonController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void RecieveDamage(int damage)
+    public void Damage(int damage)
     {
         if (!isDead)
         {
+            Debug.Log($"Current health {currentHealth}");
+
             currentHealth -= damage;
-            anim.SetTrigger("recieveDamage"); // Activa la animación de daño
 
             if (currentHealth <= 0)
             {
                 Die();
             }
+
+            anim.SetTrigger("receiveDamage"); // Triggers receive damage animation
         }
     }
 
     void Die()
     {
         isDead = true;
-        anim.SetTrigger("die"); // Activa la animación de muerte
-        GetComponent<Collider>().enabled = false; // Desactiva el collider para evitar más golpes
-        // Destroy(gameObject, 3f); // Destruye el enemigo tras 3 segundos
+        anim.SetTrigger("die"); // Triggers the death animation
     }
 }
