@@ -26,6 +26,8 @@ public class HealthController : MonoBehaviour
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
+        Debug.Log($"I got a damage of {damage}");
+
         UpdateHealthUI();
 
         if (currentHealth <= 0)
