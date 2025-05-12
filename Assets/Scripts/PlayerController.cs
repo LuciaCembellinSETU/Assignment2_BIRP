@@ -10,13 +10,18 @@ public class PlayerController : MonoBehaviour
 
     // Camera movement
     private Vector3 moveDirection;
-    private float mouseSensitivity = 10f;    // Sensibility for the mouse
+    private float mouseSensitivity = 5f;    // Sensibility for the mouse
     private float yRotation = 0f;
 
+    // For the movement
+    private CharacterController characterController;
 
     void Start()
     {
         anim = GetComponent<Animator>();
+
+        // Character controller
+        characterController = GetComponent<CharacterController>();
 
         // Get the initial rotation for the player
         yRotation = transform.eulerAngles.y;
@@ -52,7 +57,7 @@ public class PlayerController : MonoBehaviour
     void Move(Vector3 direction)
     {
         Vector3 move = transform.TransformDirection(direction);
-        transform.position += move * moveSpeed * Time.deltaTime;
+        characterController.Move(move * moveSpeed * Time.deltaTime);
     }
 
 }
