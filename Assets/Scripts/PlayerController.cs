@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     // Camera movement
     private Vector3 moveDirection;
-    private float mouseSensitivity = 20f;    // Sensibility for the mouse
+    private float mouseSensitivity = 10f;    // Sensibility for the mouse
     private float yRotation = 0f;
 
 
