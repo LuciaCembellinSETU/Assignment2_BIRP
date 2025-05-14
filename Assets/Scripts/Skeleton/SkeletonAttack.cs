@@ -2,54 +2,61 @@ using UnityEngine;
 
 public class SkeletonAttack : MonoBehaviour
 {
-    public int damage = 1; // Daño que inflige el esqueleto
-    private AttackArea attackArea; // Área de ataque
+    public int damage = 1; // Damage inflicted by the skeleton
+    private AttackArea attackArea; // Attack area
 
     private Animator anim;
     private bool isAttacking = false;
-    private GameObject player; // Referencia al jugador
-    private Collider playerCollider; // Collider del jugador
+    private GameObject player; // Player reference
+    private Collider playerCollider; // Player's collider
+    private PlayerHealth playerHealth; // Player's health reference
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        player = GameObject.FindWithTag("Player"); // Busca al jugador por etiqueta
-        attackArea = GetComponentInChildren<AttackArea>(); // Busca el área de ataque dentro del esqueleto
+        player = GameObject.FindWithTag("Player"); // Find the player by tag
+        attackArea = GetComponentInChildren<AttackArea>(); // Find the attack area inside the skeleton
 
         if (player != null)
         {
-            playerCollider = player.GetComponent<Collider>(); // Obtiene el collider del jugador
+            playerCollider = player.GetComponent<Collider>(); // Get the player's collider
+            playerHealth = player.GetComponent<PlayerHealth>(); // Get the player's health script
         }
         else
         {
-            Debug.LogError("No se encontró un objeto con la etiqueta 'Player'.");
+            Debug.LogError("No object with the 'Player' tag was found.");
         }
 
         if (attackArea == null)
         {
-            Debug.LogError("No se encontró el componente AttackArea dentro del esqueleto.");
+            Debug.LogError("No 'AttackArea' component found inside the skeleton.");
         }
     }
 
     public void Attack()
     {
+        if (playerHealth != null && playerHealth.IsDead()) return; // Stop attacking if the player is dead
+
         if (!isAttacking)
         {
-            isAttacking = true;
-            anim.SetTrigger("attack"); // Activa la animación de ataque
+            Hit();
+            anim.SetTrigger("attack"); // Trigger attack animation
         }
     }
 
     private void Hit()
     {
+        isAttacking = true;
+
+        if (playerHealth != null && playerHealth.IsDead()) return; // Stop dealing damage if the player is dead
+
         if (player != null && attackArea != null && attackArea.GetComponent<Collider>().bounds.Intersects(playerCollider.bounds))
         {
-            Debug.Log("El esqueleto golpeó al jugador.");
-            // Aquí puedes llamar a la función que reduce la vida del jugador
+            playerHealth.Damage(damage); // Inflict damage on the player
         }
     }
 
-    // Evento de animación para finalizar el ataque
+    // Animation event to end the attack
     public void EndAttack()
     {
         isAttacking = false;

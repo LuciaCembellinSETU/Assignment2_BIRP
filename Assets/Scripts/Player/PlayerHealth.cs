@@ -1,34 +1,29 @@
 using UnityEngine;
-using UnityEngine.UI; // Necesario si usas una barra de vida en la UI
+using UnityEngine.UI; // Required if using a health bar in the UI
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 10;
-    
+    public int maxHealth = 10; // Maximum health
     private int currentHealth;
-    public Image healthBar; // Para actualizar la barra de vida (opcional)
+    private Animator anim;
+    public Image healthBar; // Health bar reference (optional)
+    private bool isDead = false; // Tracks if the player is dead
 
-    // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        // UpdateHealthUI();
+        anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Damage(int damage)
     {
-        
-    }
+        if (isDead) return; // If dead, ignore damage
 
-    public void RecieveDamage(int damage)
-    {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        Debug.Log($"I got a damage of {damage}");
-
-        UpdateHealthUI();
+        Debug.Log($"My current health is: {currentHealth}");
+        anim.SetTrigger("receiveDamage");
 
         if (currentHealth <= 0)
         {
@@ -38,24 +33,30 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(int amount)
     {
+        if (isDead) return; // Can't heal if dead
+
         currentHealth += amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         UpdateHealthUI();
     }
 
+    void Die()
+    {
+        isDead = true;
+        anim.SetTrigger("die"); // Triggers death animation
+    }
+
+    public bool IsDead()
+    {
+        return isDead; // Allows other scripts to check if the player is dead
+    }
+
     void UpdateHealthUI()
     {
-        // TODO - Health bar
         if (healthBar != null)
         {
             healthBar.fillAmount = (float)currentHealth / maxHealth;
         }
-    }
-
-    void Die()
-    {
-        Debug.Log("The player has died");
-        // TODO - Death logic and implementation
     }
 }

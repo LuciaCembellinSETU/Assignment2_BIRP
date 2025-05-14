@@ -11,7 +11,7 @@ public class SkeletonChase : MonoBehaviour
 
     private bool isChasing = false;
     private float attackRange = 2f;
-    private float attackCooldown = 1f;
+    private float attackCooldown = 3f;
     private float lastAttackTime = 0f;
 
     void Start()
@@ -25,7 +25,7 @@ public class SkeletonChase : MonoBehaviour
 
     void Update()
     {
-        if (skeletonHealth.IsDead()) return; // Si está muerto, no hace nada
+        if (skeletonHealth.IsDead()) return; // Skip if its dead
 
         if (isChasing)
         {
@@ -52,7 +52,7 @@ public class SkeletonChase : MonoBehaviour
 
     public void StartChasing()
     {
-        if (skeletonHealth.IsDead()) return; // No persigue si está muerto
+        if (skeletonHealth.IsDead()) return; // Skip if its dead
         isChasing = true;
         anim.SetBool("isRunning", true);
     }

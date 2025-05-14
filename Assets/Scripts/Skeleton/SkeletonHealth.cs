@@ -22,7 +22,6 @@ public class SkeletonHealth : MonoBehaviour, IDamageable
         if (isDead) return;
 
         currentHealth -= damage;
-        Debug.Log($"Skeleton recibió daño. Vida restante: {currentHealth}");
 
         anim.SetTrigger("receiveDamage"); // Activa animación de daño
 

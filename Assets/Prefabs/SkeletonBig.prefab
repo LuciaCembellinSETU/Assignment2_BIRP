@@ -400,10 +400,12 @@ GameObject:
   - component: {fileID: 5487973570342414610}
   - component: {fileID: 7796927588988317819}
   - component: {fileID: 1453799123983151223}
-  - component: {fileID: 698891591696047062}
   - component: {fileID: 295679297322228412}
+  - component: {fileID: 9157378324362816729}
+  - component: {fileID: 5107743606709016471}
+  - component: {fileID: 4771435919270887435}
   m_Layer: 0
-  m_Name: Skeleton
+  m_Name: SkeletonBig
   m_TagString: SkeletonR1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,9 +419,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783724067947609619}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.044151783, y: 0, z: 5.0239043}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -21.2, y: 27.76, z: -25.77}
+  m_LocalScale: {x: 1.4243, y: 1.4243, z: 1.4243}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6405560546979098048}
@@ -501,19 +503,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &698891591696047062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783724067947609619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe88ca01ae72f408cddff1ea9c6e9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 2
 --- !u!195 &295679297322228412
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -524,7 +513,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -536,6 +525,44 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &9157378324362816729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783724067947609619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85308645fa1388b4b81cf02977296bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
+--- !u!114 &5107743606709016471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783724067947609619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a69ab606847e4284e979f01feadade07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4771435919270887435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783724067947609619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0690c3b905454f048b414e57da915895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2
 --- !u!1 &2090734514937247137
 GameObject:
   m_ObjectHideFlags: 0

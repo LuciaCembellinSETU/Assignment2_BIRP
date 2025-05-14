@@ -15,7 +15,6 @@ public class AgentManager : MonoBehaviour
         if(room == SkeletonRooms.Room1)
         {
             agents = GameObject.FindGameObjectsWithTag("SkeletonR1");
-            Debug.Log("Found Agents: " + agents.Length);
         }
         else if (room == SkeletonRooms.Room2)
         {
@@ -45,7 +44,7 @@ public class AgentManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("El objeto " + a.name + " no tiene el script ChasePlayer.");
+                Debug.LogError("The object " + a.name + " has no script called ChasePlayer.");
             }
         }
     }
