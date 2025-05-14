@@ -629,7 +629,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 698891591696047062, guid: 0fdcb7893620f634e938f4c2f6ecf506, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -691,7 +692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  attackArea: {fileID: 1916732106}
 --- !u!850595691 &530315150
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -5157,7 +5157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4147809738196752779, guid: 8f19336bdb5b5894bbc1d8bd6d04a909, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.89500046
+      value: 0.536
       objectReference: {fileID: 0}
     - target: {fileID: 4147809738196752779, guid: 8f19336bdb5b5894bbc1d8bd6d04a909, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5343,17 +5343,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &1916732106 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3739119601377968676, guid: 0fdcb7893620f634e938f4c2f6ecf506, type: 3}
-  m_PrefabInstance: {fileID: 375957637}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51b4c1c11edef9d468d043615d5c9fbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1920238379
 Mesh:
   m_ObjectHideFlags: 0

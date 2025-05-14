@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI; // Necesario si usas una barra de vida en la UI
 
-public class HealthController : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 10;
     
@@ -12,7 +12,7 @@ public class HealthController : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        UpdateHealthUI();
+        // UpdateHealthUI();
     }
 
     // Update is called once per frame

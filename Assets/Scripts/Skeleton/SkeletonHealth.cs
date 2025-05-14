@@ -37,8 +37,6 @@ public class SkeletonHealth : MonoBehaviour, IDamageable
         isDead = true;
         anim.SetTrigger("die"); // Activa animación de muerte
         skeletonChase.StopChasing(); // Detiene la persecución
-        gameObject.tag = "DeadEnemy"; // Cambia el tag para evitar futuras interacciones
-        Destroy(gameObject, 5f); // Destruye el objeto después de 5 segundos
     }
 
     public bool IsDead()

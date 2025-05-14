@@ -38,10 +38,10 @@ public class AgentManager : MonoBehaviour
 
         foreach (GameObject a in agents)
         {
-            SkeletonController skeletonController = a.GetComponent<SkeletonController>();
-            if (skeletonController != null)
+            SkeletonChase skeletonChase = a.GetComponent<SkeletonChase>();
+            if (skeletonChase != null)
             {
-                skeletonController.StartChasing();
+                skeletonChase.StartChasing();
             }
             else
             {
