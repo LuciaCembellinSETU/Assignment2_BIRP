@@ -12,21 +12,21 @@ public class MenuController : MonoBehaviour
         GameManager.Instance.LoadMainMenu();
     }
 
-    public void GameOverRestartLevelButton()
+    public void GameOverRespawnButton()
     {
+        Debug.Log("Cargando Indoors...");
         GameManager.Instance.LoadIndoors();
     }
 
-    public void GameOverRestartButton()
+    public void GameOverPlayAgainButton()
     {
+        Debug.Log("Cargando MainMenu...");
         GameManager.Instance.LoadMainMenu();
     }
 
     public void ExitGame()
     {
         Debug.Log("Exiting game...");
-
-        // Close the game (works in standalone builds)
         Application.Quit();
     }
 }
