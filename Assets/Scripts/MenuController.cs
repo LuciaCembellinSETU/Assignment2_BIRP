@@ -16,10 +16,4 @@ public class MenuController : MonoBehaviour
     {
         GameManager.Instance.LoadMainMenu();
     }
-
-    public void ExitGame()
-    {
-        Debug.Log("Exiting game...");
-        Application.Quit();
-    }
 }
