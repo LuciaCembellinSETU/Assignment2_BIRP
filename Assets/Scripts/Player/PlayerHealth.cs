@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     private Animator anim;
     public Image healthBar; // Health bar reference (optional)
     private bool isDead = false; // Tracks if the player is dead
+    public float deathSceneDelay = 2f; // Time before switching to GameOver scene
 
     void Start()
     {
@@ -43,8 +44,26 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        isDead = true;
-        anim.SetTrigger("die"); // Triggers death animation
+        if (isDead) return; // Prevent multiple calls to Die()
+
+        isDead = true; // Ensure player is marked as dead
+        anim.SetTrigger("die"); // Play death animation
+
+        Debug.Log("Player is dead. Scene will change after delay.");
+
+        if (GameManager.Instance != null)
+        {
+            Invoke(nameof(TriggerGameOverScene), deathSceneDelay); // Wait before changing scene
+        }
+        else
+        {
+            Debug.LogError("GameManager.Instance is missing!");
+        }
+    }
+
+    void TriggerGameOverScene()
+    {
+        GameManager.Instance.LoadGameOver();
     }
 
     public bool IsDead()
