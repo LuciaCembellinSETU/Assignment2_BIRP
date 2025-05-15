@@ -12,15 +12,8 @@ public class MenuController : MonoBehaviour
         GameManager.Instance.LoadMainMenu();
     }
 
-    public void GameOverRespawnButton()
-    {
-        Debug.Log("Cargando Indoors...");
-        GameManager.Instance.LoadIndoors();
-    }
-
     public void GameOverPlayAgainButton()
     {
-        Debug.Log("Cargando MainMenu...");
         GameManager.Instance.LoadMainMenu();
     }
 
