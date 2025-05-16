@@ -14,7 +14,7 @@ public class SkeletonHealth : MonoBehaviour, IDamageable
     {
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
-        skeletonChase = GetComponent<SkeletonChase>(); // Referencia al script de persecución
+        skeletonChase = GetComponent<SkeletonChase>(); // Reference to Chase script
     }
 
     public void Damage(int damage)
@@ -23,7 +23,7 @@ public class SkeletonHealth : MonoBehaviour, IDamageable
 
         currentHealth -= damage;
 
-        anim.SetTrigger("receiveDamage"); // Activa animación de daño
+        anim.SetTrigger("receiveDamage");
 
         if (currentHealth <= 0)
         {
@@ -34,8 +34,9 @@ public class SkeletonHealth : MonoBehaviour, IDamageable
     void Die()
     {
         isDead = true;
-        anim.SetTrigger("die"); // Activa animación de muerte
-        skeletonChase.StopChasing(); // Detiene la persecución
+        anim.SetTrigger("die");
+        skeletonChase.StopChasing(); // Stops the chasing
+        Destroy(gameObject, 7f); // Destroy the skeleton after 2 seconds
     }
 
     public bool IsDead()

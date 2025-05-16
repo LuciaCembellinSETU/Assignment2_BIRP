@@ -1,30 +1,64 @@
 using UnityEngine;
-using UnityEngine.UI; // Required if using a health bar in the UI
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 10; // Maximum health
+    public int maxHealth = 10;
     private int currentHealth;
     private Animator anim;
-    public Image healthBar; // Health bar reference (optional)
-    private bool isDead = false; // Tracks if the player is dead
-    public float deathSceneDelay = 2f; // Time before switching to GameOver scene
+    private bool isDead = false;
+    public float deathSceneDelay = 2f;
+
+    public Image healthBarFill; // Barra de relleno
+    public Sprite greenBar, orangeBar, redBar; // Sprites de los colores
 
     void Start()
     {
         currentHealth = maxHealth;
         anim = GetComponent<Animator>();
+
+        UpdateHealthUI();
     }
+
+    private void UpdateHealthUI()
+    {
+        if (healthBarFill != null)
+        {
+            float healthPercentage = (float)currentHealth / maxHealth;
+
+            // Cambiar el sprite de la barra según el nivel de salud
+            if (healthPercentage > 0.5f)
+            {
+                healthBarFill.sprite = greenBar;
+            }
+            else if (healthPercentage > 0.25f)
+            {
+                healthBarFill.sprite = orangeBar;
+            }
+            else
+            {
+                healthBarFill.sprite = redBar;
+            }
+
+            // Ajustar el relleno de la barra de vida
+            healthBarFill.fillAmount = healthPercentage;
+
+        }
+    }
+
+
 
     public void Damage(int damage)
     {
-        if (isDead) return; // If dead, ignore damage
+        if (isDead) return;
 
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        Debug.Log($"My current health is: {currentHealth}");
+        Debug.Log($"Mi vida actual es: {currentHealth}");
         anim.SetTrigger("receiveDamage");
+
+        UpdateHealthUI();
 
         if (currentHealth <= 0)
         {
@@ -34,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(int amount)
     {
-        if (isDead) return; // Can't heal if dead
+        if (isDead) return;
 
         currentHealth += amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -44,16 +78,14 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        if (isDead) return; // Prevent multiple calls to Die()
+        if (isDead) return;
 
-        isDead = true; // Ensure player is marked as dead
-        anim.SetTrigger("die"); // Play death animation
-
-        Debug.Log("Player is dead. Scene will change after delay.");
+        isDead = true;
+        anim.SetTrigger("die");
 
         if (GameManager.Instance != null)
         {
-            Invoke(nameof(TriggerGameOverScene), deathSceneDelay); // Wait before changing scene
+            Invoke(nameof(TriggerGameOverScene), deathSceneDelay);
         }
         else
         {
@@ -68,14 +100,6 @@ public class PlayerHealth : MonoBehaviour
 
     public bool IsDead()
     {
-        return isDead; // Allows other scripts to check if the player is dead
-    }
-
-    void UpdateHealthUI()
-    {
-        if (healthBar != null)
-        {
-            healthBar.fillAmount = (float)currentHealth / maxHealth;
-        }
+        return isDead;
     }
 }
