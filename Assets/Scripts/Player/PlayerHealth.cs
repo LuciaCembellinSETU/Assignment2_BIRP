@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
         {
             float healthPercentage = (float)currentHealth / maxHealth;
 
-            // Cambiar el sprite de la barra según el nivel de salud
+            // Change the color
             if (healthPercentage > 0.5f)
             {
                 healthBarFill.sprite = greenBar;
@@ -40,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
                 healthBarFill.sprite = redBar;
             }
 
-            // Ajustar el relleno de la barra de vida
+            // Adjust the fill
             healthBarFill.fillAmount = healthPercentage;
 
         }
@@ -53,7 +53,6 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        Debug.Log($"Mi vida actual es: {currentHealth}");
         anim.SetTrigger("receiveDamage");
 
         UpdateHealthUI();

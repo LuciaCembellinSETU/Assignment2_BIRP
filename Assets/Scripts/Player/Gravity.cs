@@ -24,7 +24,7 @@ public class Gravity : MonoBehaviour
         }
         else
         {
-            velocity.y = -2f;  // Mantiene al personaje pegado al suelo
+            velocity.y = -2f;
         }
 
         characterController.Move(velocity * Time.deltaTime);

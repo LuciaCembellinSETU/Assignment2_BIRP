@@ -16,10 +16,10 @@ public class CameraController : MonoBehaviour
     {
         if (!player) return;
 
-        // Punto objetivo ideal
+        // Objective
         Vector3 desiredPosition = player.position + player.TransformDirection(offset.normalized) * maxDistance;
 
-        // Dirección desde el jugador al objetivo
+        // Direction from the player to the objective
         Vector3 direction = (desiredPosition - player.position).normalized;
 
         RaycastHit hit;
@@ -31,15 +31,15 @@ public class CameraController : MonoBehaviour
             float adjustedDistance = Mathf.Clamp(hit.distance, minDistance, maxDistance);
             finalPosition = player.position + direction * adjustedDistance;
 
-            // Aquí aplicamos el levantamiento vertical
-            float distanceFactor = 1 - (adjustedDistance / maxDistance); // 0 cerca, 1 lejos
+            // Vertical lift
+            float distanceFactor = 1 - (adjustedDistance / maxDistance); // 0 close, 1 far
             float heightOffset = verticalAdjustment * distanceFactor;
             finalPosition += Vector3.up * heightOffset;
         }
 
         transform.position = Vector3.SmoothDamp(transform.position, finalPosition, ref currentVelocity, 0.05f);
 
-        // Siempre mirar al jugador con un ligero desplazamiento hacia arriba
+        // Look a bit above the player
         transform.LookAt(player.position + Vector3.up * 1.2f);
     }
 }
