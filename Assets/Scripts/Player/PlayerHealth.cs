@@ -9,8 +9,8 @@ public class PlayerHealth : MonoBehaviour
     private bool isDead = false;
     public float deathSceneDelay = 2f;
 
-    public Image healthBarFill; // Barra de relleno
-    public Sprite greenBar, orangeBar, redBar; // Sprites de los colores
+    public Image healthBarFill; // HealthBar
+    public Sprite greenBar, orangeBar, redBar; // Sprites for the colors
 
     void Start()
     {
@@ -45,8 +45,6 @@ public class PlayerHealth : MonoBehaviour
 
         }
     }
-
-
 
     public void Damage(int damage)
     {
