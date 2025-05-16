@@ -445,8 +445,8 @@ GameObject:
   m_Component:
   - component: {fileID: 87580470}
   - component: {fileID: 87580472}
-  - component: {fileID: 87580471}
   - component: {fileID: 87580473}
+  - component: {fileID: 87580471}
   m_Layer: 0
   m_Name: TriggerVictory
   m_TagString: Untagged
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameScene: 3
-  delay: 3
+  delay: 5
 --- !u!65 &87580472
 BoxCollider:
   m_ObjectHideFlags: 0
